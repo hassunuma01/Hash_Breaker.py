@@ -1,0 +1,15 @@
+import hashlib
+
+hash_alvo = "[YOUR HASH]"
+
+with open("[YOUR WORDLIST]", "r") as arquivo:
+    linha = arquivo.readline()
+    while linha:
+        nome = linha.strip()
+        hash_nome = hashlib.sha3_512(nome.encode()).hexdigest()
+        if hash_nome == hash_alvo:
+            print(f"A senha é: {nome}")
+            break
+        linha = arquivo.readline()
+    else:
+        print("A senha não foi encontrada no arquivo.")
